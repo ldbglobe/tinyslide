@@ -1,0 +1,71 @@
+/*********************************************************************/
+.grid {
+  padding: 0;
+  margin: 0 0 10px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.grid .grid-item {
+  width: calc(100% / 3);
+  background-size: cover;
+  background-position: 50% 50%;
+}
+.grid .grid-item-body {
+  padding-top: 30%;
+  position: relative;
+}
+.grid .grid-item-body .item-title {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  background: rgba(255, 255, 255, 0.8);
+  display: inline-block;
+  font-size: 2em;
+  line-height: 1em;
+  height: 1em;
+  min-width: 0.5em;
+  padding: 0.1em 0.5em 0.3em 0.2em;
+  border-radius: 3px 3px 100% 3px;
+}
+.grid .grid-item-body .item-extra {
+  margin: 10px;
+  padding: 10px;
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+}
+/*********************************************************************/
+.grid2 {
+  padding: 0;
+  margin: 0 0 10px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.grid2 .grid-item {
+  width: calc(100% / 3);
+  background-size: cover;
+  background-position: 50% 50%;
+}
+.grid2 .grid-item-body {
+  padding-top: 56.6%;
+  position: relative;
+}
+.grid2 .grid-item-body .item-title {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  background: rgba(255, 255, 255, 0.8);
+  display: inline-block;
+  font-size: 2em;
+  line-height: 1em;
+  height: 1em;
+  min-width: 0.5em;
+  padding: 0.1em 0.2em 0.3em 0.5em;
+  border-radius: 3px 3px 3px 100%;
+}
+
+/*********************************************************************/
+.my-custom-slide {
+  max-width: 400px;
+}

@@ -1,24 +1,32 @@
 {
-	"name": "tinyslide",
-	"version": "1.0.0",
-	"description": "",
-	"private": true,
-	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1",
-		"build": "webpack",
-		"watch": "webpack serve"
-	},
-	"keywords": [],
-	"author": "",
-	"license": "MIT",
-	"devDependencies": {
-		"css-loader": "^6.1.0",
-		"html-webpack-plugin": "^5.3.2",
-		"sass": "^1.35.2",
-		"sass-loader": "^12.1.0",
-		"style-loader": "^3.1.0",
-		"webpack": "^5.45.1",
-		"webpack-cli": "^4.7.2",
-		"webpack-dev-server": "^3.11.2"
-	}
+  "name": "tinyslide",
+  "version": "1.5.0",
+  "description": "Vanilla JS Tiny Slider/Carousel / Using css property as dynamic settings",
+  "private": false,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack --mode production",
+    "watch": "webpack watch --mode development"
+  },
+  "keywords": [],
+  "license": "MIT",
+  "main": "./src/tinyslide.js",
+  "devDependencies": {
+    "css-loader": "^6.1.0",
+    "html-webpack-plugin": "^5.3.2",
+    "sass": "^1.35.2",
+    "sass-loader": "^12.1.0",
+    "style-loader": "^3.1.0",
+    "webpack": "^5.45.1",
+    "webpack-cli": "^4.7.2",
+    "webpack-dev-server": "^3.11.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ldbglobe/tinyslide.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ldbglobe/tinyslide/issues"
+  },
+  "homepage": "https://github.com/ldbglobe/tinyslide#readme"
 }

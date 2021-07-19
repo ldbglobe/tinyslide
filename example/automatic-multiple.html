@@ -3,6 +3,8 @@
 <head>
 	<meta charset="utf-8"/>
 	<title>Tinyslide</title>
+	<script src="../dist/index.js"></script>
+	<link rel="stylesheet" type="text/css" href="example.css">
 </head>
 <body>
 	<style>
@@ -12,12 +14,41 @@
 		--tinyslide-size:3;
 		--tinyslide-speed:1s;
 		--tinyslide-autoplay:2s;
+		--tinyslide-gutter:10px;
+		--tinyslide-btn-width:100px;
+		--tinyslide-btn-pad-h:10px;
+		--tinyslide-btn-pad-v:10px;
 	}
 	/* Easy responsive carousel size 😁 */
 	@media (max-width:1000px) {
 		.grid.tinyslide {
 			--tinyslide-size:2;
 		}
+	}
+	@media (max-width:700px) {
+		.grid.tinyslide {
+			--tinyslide-size:1;
+		}
+	}
+
+	.grid2.tinyslide {
+		--tinyslide-size:3;
+		--tinyslide-autoplay:1s;
+		--tinyslide-speed:0.5s;
+		--tinyslide-gutter:10px;
+		--tinyslide-overflow-size:100px;
+		--tinyslide-overflow-opacity:0.5;
+		--tinyslide-btn-width:70px;
+		--tinyslide-btn-fontsize:3em;
+		--tinyslide-btn-pad-h:10px;
+		--tinyslide-btn-pad-v:10px;
+		--tinyslide-btn-background:#f00;
+		--tinyslide-btn-color:#000;
+		--tinyslide-btn-opacity:0.3;
+		--tinyslide-btn-hover-speed:.25s;
+		--tinyslide-btn-hover-background:#fff;
+		--tinyslide-btn-hover-color:#000;
+		--tinyslide-btn-hover-opacity:0.8;
 	}
 	</style>
 	<section class="grid tinyslide">
@@ -39,10 +70,10 @@
 	</section>
 	<section class="grid2 tinyslide">
 		<div class="grid-item" style="background-image:url('https://source.unsplash.com/random/400x200?nature');">
-			<div class="grid-item-body"><span class="item-title">A</span><p class="item-extra">Note about this grid item skin. A top padding is applied to the body to ensure a default media ratio. Title element is set as an aboslute element over the background, but this extra content is just added bellow and add more height on the item. But the tinyslide flex positionning allow a coherent deformation on all slide item.</p></div>
+			<div class="grid-item-body"><span class="item-title">A</span></div>
 		</div>
 		<div class="grid-item" style="background-image:url('https://source.unsplash.com/random/400x200?building');">
-			<div class="grid-item-body"><span class="item-title">B</span><p class="item-extra">The grid base grid layout (without js or slider applied) and item skin is not handled by tinyslider. Can can apply this slider to any kind of content. More example to come</p></div>
+			<div class="grid-item-body"><span class="item-title">B</span></div>
 		</div>
 		<div class="grid-item" style="background-image:url('https://source.unsplash.com/random/400x200?kitchen');">
 			<div class="grid-item-body"><span class="item-title">C</span></div>
@@ -54,5 +85,8 @@
 			<div class="grid-item-body"><span class="item-title">E</span></div>
 		</div>
 	</section>
+	<script>
+	window.Tinyslide.AutomaticBuild();
+	</script>
 </body>
 </html>

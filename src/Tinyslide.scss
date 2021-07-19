@@ -1,0 +1,153 @@
+// *************************************************
+// TinySlide css rules
+// *************************************************
+
+.tinyslide-ready {
+	--tinyslide-size:1;
+	--tinyslide-autoplay:3s;
+	--tinyslide-speed:1s;
+	--tinyslide-gutter:0px;
+	--tinyslide-overflow-size:0px;
+	--tinyslide-overflow-opacity:0.3;
+	--tinyslide-btn-width:0px;
+	--tinyslide-btn-height:100%;
+	--tinyslide-btn-fontsize:3em;
+	--tinyslide-btn-pad-h:0px;
+	--tinyslide-btn-pad-v:0px;
+	--tinyslide-btn-background:#fff;
+	--tinyslide-btn-color:#000;
+	--tinyslide-btn-opacity:0.5;
+	--tinyslide-btn-hover-speed:.25s;
+	--tinyslide-btn-hover-background:var(--tinyslide-btn-background);
+	--tinyslide-btn-hover-color:var(--tinyslide-btn-color);
+	--tinyslide-btn-hover-opacity:1;
+
+	// privte var (updated by JS application)
+	--tinyslide-private-flex-item-extra:2;
+	--tinyslide-private-flex-item-count:0;
+	--tinyslide-private-flex-width : calc(
+		100% * var(--tinyslide-private-flex-item-count) / var(--tinyslide-size)
+		- 2 * var(--tinyslide-private-flex-item-count) * var(--tinyslide-overflow-size) / var(--tinyslide-size)
+		+ 1 *  var(--tinyslide-private-flex-item-count) * var(--tinyslide-gutter) / var(--tinyslide-size)
+	);
+	--tinyslide-private-flex-item-width : calc(100% / var(--tinyslide-private-flex-item-count));
+	--tinyslide-private-flex-delta : calc(-1 * var(--tinyslide-gutter) / 2 + var(--tinyslide-overflow-size));
+
+	width: 100% !important;
+	box-sizing:border-box;
+	position: relative;
+	padding:0;
+
+	.tinyslide-wrapper {
+		// first child of source element
+		// now it is the main slider element
+		// the tinyslide-slider element (items band larger than wrapper) will be inside
+		display:block;
+		width:100%;
+		padding: 0;
+		margin: 0;
+		overflow: hidden;
+	}
+
+	.tinyslide-slider {
+		width: var(--tinyslide-private-flex-width);
+		transform:translateX(calc(-1 * var(--tinyslide-private-flex-item-extra) * var(--tinyslide-private-flex-item-width) + var(--tinyslide-private-flex-delta)));
+		display: flex;
+		flex-direction:row;
+		flex-wrap:nowrap;
+		justify-content: center;
+		overflow: hidden;
+	}
+	.tinyslide-slider > * {
+		flex:1 !important;
+		position: relative;
+		margin:0 calc(var(--tinyslide-gutter) / 2) !important;
+		width: calc(100% / var(--tinyslide-size)) !important;
+		opacity:1;
+		transition: opacity ease var(--tinyslide-speed);
+	}
+	.tinyslide-slider > .in  { }
+	.tinyslide-slider > .out { opacity:var(--tinyslide-overflow-opacity); }
+
+	.tinyslide-slider > .in-first {  }
+	.tinyslide-slider > .in-last {  }
+	.tinyslide-slider > .out-after {  }
+	.tinyslide-slider > .out-before {  }
+
+	&.anim-next .tinyslide-slider > .in-first { opacity: var(--tinyslide-overflow-opacity); }
+	&.anim-next .tinyslide-slider > .in-last { }
+	&.anim-next .tinyslide-slider > .out-after { opacity:1; }
+	&.anim-next .tinyslide-slider > .out-before { }
+
+	&.anim-prev .tinyslide-slider > .in-first { }
+	&.anim-prev .tinyslide-slider > .in-last { opacity: var(--tinyslide-overflow-opacity); }
+	&.anim-prev .tinyslide-slider > .out-after { }
+	&.anim-prev .tinyslide-slider > .out-before { opacity:1; }
+
+	&.anim-next .tinyslide-slider,
+	&.anim-prev .tinyslide-slider {
+		transition: transform ease var(--tinyslide-speed);
+	}
+	&.anim-next .tinyslide-slider { transform:translateX(calc(-1 * calc(var(--tinyslide-private-flex-item-extra) + 1) * var(--tinyslide-private-flex-item-width) + var(--tinyslide-private-flex-delta))); }
+	&.anim-prev .tinyslide-slider { transform:translateX(calc(-1 * calc(var(--tinyslide-private-flex-item-extra) - 1) * var(--tinyslide-private-flex-item-width) + var(--tinyslide-private-flex-delta))); }
+
+	.tinyslide-control {
+		position: absolute;
+		left: 0;
+		right: 0;
+		top: 0;
+		bottom: 0;
+		pointer-events: none;
+		.tinyslide-ctrl-prev,
+		.tinyslide-ctrl-next {
+			pointer-events: all;
+			position: absolute;
+			align-items: center;
+			align-content: center;
+			text-align: center;
+			outline: none;
+			cursor: pointer;
+			border: none;
+			transition:all ease var(--tinyslide-btn-hover-speed);
+			opacity:var(--tinyslide-btn-opacity);
+			--tinyslide-private-btn-height: min(100%, var(--tinyslide-btn-height), calc(100% - 2 * var(--tinyslide-btn-pad-v)));
+			top: calc(calc(100% - var(--tinyslide-private-btn-height)) / 2);
+			height: var(--tinyslide-private-btn-height);
+			width: var(--tinyslide-btn-width);
+			background:var(--tinyslide-btn-background);
+			display:flex;
+			align-items:center;
+			justify-content:center;
+			overflow: hidden;
+
+			span {
+				transition:all ease .5s;
+				font-size: var(--tinyslide-btn-fontsize);
+				color: var(--tinyslide-btn-color);
+			}
+
+			&:hover {
+				opacity:var(--tinyslide-btn-hover-opacity);
+				background:var(--tinyslide-btn-hover-background);
+				span {
+					color: var(--tinyslide-btn-hover-color);
+				}
+			}
+		}
+		.tinyslide-ctrl-prev {
+			left: var(--tinyslide-btn-pad-h);
+		}
+		.tinyslide-ctrl-next {
+			right: var(--tinyslide-btn-pad-h);
+		}
+	}
+
+	&.hide-out-items {
+		.out {
+			opacity: 0;
+		}
+		.tinyslide-control {
+			display: none;
+		}
+	}
+}

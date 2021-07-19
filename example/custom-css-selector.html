@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<title>Tinyslide</title>
+	<script src="../dist/index.js"></script>
+	<link rel="stylesheet" type="text/css" href="example.css">
+</head>
+<body>
+	<section class="grid my-custom-slides">
+		<div class="grid-item" style="background-image:url('https://source.unsplash.com/random/400x200?nature');">
+			<div class="grid-item-body"><span class="item-title">A</span></div>
+		</div>
+		<div class="grid-item" style="background-image:url('https://source.unsplash.com/random/400x200?building');">
+			<div class="grid-item-body"><span class="item-title">B</span></div>
+		</div>
+		<div class="grid-item" style="background-image:url('https://source.unsplash.com/random/400x200?kitchen');">
+			<div class="grid-item-body"><span class="item-title">C</span></div>
+		</div>
+		<div class="grid-item" style="background-image:url('https://source.unsplash.com/random/400x200?animal');">
+			<div class="grid-item-body"><span class="item-title">D</span></div>
+		</div>
+		<div class="grid-item" style="background-image:url('https://source.unsplash.com/random/400x200?mountain');">
+			<div class="grid-item-body"><span class="item-title">E</span></div>
+		</div>
+	</section>
+	<section class="grid my-custom-slides">
+		<div class="grid-item" style="background-image:url('https://source.unsplash.com/random/400x200?nature');">
+			<div class="grid-item-body"><span class="item-title">A</span></div>
+		</div>
+		<div class="grid-item" style="background-image:url('https://source.unsplash.com/random/400x200?building');">
+			<div class="grid-item-body"><span class="item-title">B</span></div>
+		</div>
+		<div class="grid-item" style="background-image:url('https://source.unsplash.com/random/400x200?kitchen');">
+			<div class="grid-item-body"><span class="item-title">C</span></div>
+		</div>
+		<div class="grid-item" style="background-image:url('https://source.unsplash.com/random/400x200?animal');">
+			<div class="grid-item-body"><span class="item-title">D</span></div>
+		</div>
+		<div class="grid-item" style="background-image:url('https://source.unsplash.com/random/400x200?mountain');">
+			<div class="grid-item-body"><span class="item-title">E</span></div>
+		</div>
+	</section>
+	<section class="grid my-other-slide">
+		<div class="grid-item" style="background-image:url('https://source.unsplash.com/random/400x200?nature');">
+			<div class="grid-item-body"><span class="item-title">A</span></div>
+		</div>
+		<div class="grid-item" style="background-image:url('https://source.unsplash.com/random/400x200?building');">
+			<div class="grid-item-body"><span class="item-title">B</span></div>
+		</div>
+		<div class="grid-item" style="background-image:url('https://source.unsplash.com/random/400x200?kitchen');">
+			<div class="grid-item-body"><span class="item-title">C</span></div>
+		</div>
+		<div class="grid-item" style="background-image:url('https://source.unsplash.com/random/400x200?animal');">
+			<div class="grid-item-body"><span class="item-title">D</span></div>
+		</div>
+		<div class="grid-item" style="background-image:url('https://source.unsplash.com/random/400x200?mountain');">
+			<div class="grid-item-body"><span class="item-title">E</span></div>
+		</div>
+	</section>
+	<script>
+	window.Tinyslide.Build('.my-custom-slides',{
+		style:{
+			size:3,
+			autoplay:'1s',
+		}
+	})
+	window.Tinyslide.Build('.my-other-slide',{
+		style:{
+			size:4,
+			autoplay:'500ms',
+			gutter:"10px",
+			"overflow-size":"100px",
+			"btn-width":'90px',
+			"btn-background":'red',
+		}
+	})
+	</script>
+</body>
+</html>
