@@ -1,0 +1,24 @@
+{
+	"name": "tinyslide",
+	"version": "1.0.0",
+	"description": "",
+	"private": true,
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"build": "webpack",
+		"watch": "webpack serve"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "MIT",
+	"devDependencies": {
+		"css-loader": "^6.1.0",
+		"html-webpack-plugin": "^5.3.2",
+		"sass": "^1.35.2",
+		"sass-loader": "^12.1.0",
+		"style-loader": "^3.1.0",
+		"webpack": "^5.45.1",
+		"webpack-cli": "^4.7.2",
+		"webpack-dev-server": "^3.11.2"
+	}
+}
