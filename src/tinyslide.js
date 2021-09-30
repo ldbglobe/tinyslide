@@ -269,7 +269,7 @@ export class Tinyslide {
 				value.match(/^[0-9.]+s$/) ? 1000 * value.replaceAll(/[^0-9.]/g,'') // s
 				: value.replaceAll(/[^0-9.]/g,''); // ms
 
-			let timingChunk = 250;
+			let timingChunk = 500;
 			value = value ? (value<timingChunk ? timingChunk : Math.round(value/timingChunk)*timingChunk) : 0;
 		}
 		return value;
@@ -303,13 +303,13 @@ export class Tinyslide {
 		this.state.domControlPrev = document.createElement('div');
 		this.state.domControlPrev.classList.add('tinyslide-ctrl-prev');
 		this.state.domControlPrev.innerHTML = '<span>◄</span>';
-		this.state.domControlPrev.addEventListener('click', ()=>this.prev(), true);
+		this.state.domControlPrev.addEventListener('click', ()=>this.doPrev(), true);
 		this.state.domControls.appendChild(this.state.domControlPrev);
 
 		this.state.domControlNext = document.createElement('div');
 		this.state.domControlNext.classList.add('tinyslide-ctrl-next');
 		this.state.domControlNext.innerHTML = '<span>►</span>';
-		this.state.domControlNext.addEventListener('click', ()=>this.next(), true);
+		this.state.domControlNext.addEventListener('click', ()=>this.doNext(), true);
 		this.state.domControls.appendChild(this.state.domControlNext);
 
 		// add control container to the main wrapper
