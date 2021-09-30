@@ -1,6 +1,6 @@
 {
   "name": "tinyslide",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Vanilla JS Tiny Slider/Carousel / Using css property as dynamic settings",
   "private": false,
   "scripts": {
