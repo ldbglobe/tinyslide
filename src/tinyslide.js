@@ -220,21 +220,9 @@ export class Tinyslide {
 		this.state.animation.mode = null;
 	}
 
-
-	removeFromQueue()
-	{
-		var index = TINYSLIDE_GLOBALS.nextQueue.indexOf(this.getId());
-		if(index>-1)
-			delete TINYSLIDE_GLOBALS.nextQueue[index]
-
-		var index = TINYSLIDE_GLOBALS.prevQueue.indexOf(this.getId());
-		if(index>-1)
-			delete TINYSLIDE_GLOBALS.prevQueue[index]
-	}
-
 	next()
 	{
-		this.removeFromQueue()
+		this.__helper_removeFromQueue()
 		TINYSLIDE_GLOBALS.nextQueue.push(this.getId());
 	}
 	doNext()
@@ -254,7 +242,7 @@ export class Tinyslide {
 
 	prev()
 	{
-		this.removeFromQueue()
+		this.__helper_removeFromQueue()
 		TINYSLIDE_GLOBALS.prevQueue.push(this.getId());
 	}
 	doPrev()
@@ -280,6 +268,9 @@ export class Tinyslide {
 			value =
 				value.match(/^[0-9.]+s$/) ? 1000 * value.replaceAll(/[^0-9.]/g,'') // s
 				: value.replaceAll(/[^0-9.]/g,''); // ms
+
+			let timingChunk = 250;
+			value = value ? (value<timingChunk ? timingChunk : Math.round(value/timingChunk)*timingChunk) : 0;
 		}
 		return value;
 	}
@@ -340,21 +331,32 @@ export class Tinyslide {
 		wrapper.appendChild(el);
 		return wrapper;
 	}
+
+	__helper_removeFromQueue()
+	{
+		var index = TINYSLIDE_GLOBALS.nextQueue.indexOf(this.getId());
+		if(index>-1)
+			delete TINYSLIDE_GLOBALS.nextQueue[index]
+
+		var index = TINYSLIDE_GLOBALS.prevQueue.indexOf(this.getId());
+		if(index>-1)
+			delete TINYSLIDE_GLOBALS.prevQueue[index]
+	}
 }
 
 setInterval(() => {
 	if(TINYSLIDE_GLOBALS.nextQueue.length>0)
 	{
-		console.log(TINYSLIDE_GLOBALS.nextQueue)
+		//console.log(TINYSLIDE_GLOBALS.nextQueue)
 		TINYSLIDE_GLOBALS.nextQueue.forEach((id) => { if(id) Tinyslide.GetInstance(id)?.doNext(); })
 		TINYSLIDE_GLOBALS.nextQueue=[];
 	}
 	if(TINYSLIDE_GLOBALS.prevQueue.length>0)
 	{
-		console.log(TINYSLIDE_GLOBALS.prevQueue)
+		//console.log(TINYSLIDE_GLOBALS.prevQueue)
 		TINYSLIDE_GLOBALS.prevQueue.forEach((id) => { if(id) Tinyslide.GetInstance(id)?.doPrev(); })
 		TINYSLIDE_GLOBALS.prevQueue=[];
 	}
-},100)
+},500)
 
 export default Tinyslide
