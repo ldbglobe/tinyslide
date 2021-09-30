@@ -3,6 +3,8 @@ require('./tinyslide.scss')
 const TINYSLIDE_GLOBALS = {
 	index:0,
 	instances:{},
+	nextQueue:[],
+	prevQueue:[],
 }
 window.TINYSLIDE_GLOBALS = TINYSLIDE_GLOBALS;
 
@@ -218,7 +220,24 @@ export class Tinyslide {
 		this.state.animation.mode = null;
 	}
 
+
+	removeFromQueue()
+	{
+		var index = TINYSLIDE_GLOBALS.nextQueue.indexOf(this.getId());
+		if(index>-1)
+			delete TINYSLIDE_GLOBALS.nextQueue[index]
+
+		var index = TINYSLIDE_GLOBALS.prevQueue.indexOf(this.getId());
+		if(index>-1)
+			delete TINYSLIDE_GLOBALS.prevQueue[index]
+	}
+
 	next()
+	{
+		this.removeFromQueue()
+		TINYSLIDE_GLOBALS.nextQueue.push(this.getId());
+	}
+	doNext()
 	{
 		if(this.state.animation.mode!=='next')
 		{
@@ -234,6 +253,11 @@ export class Tinyslide {
 	}
 
 	prev()
+	{
+		this.removeFromQueue()
+		TINYSLIDE_GLOBALS.prevQueue.push(this.getId());
+	}
+	doPrev()
 	{
 		if(this.state.animation.mode!=='prev')
 		{
@@ -316,7 +340,21 @@ export class Tinyslide {
 		wrapper.appendChild(el);
 		return wrapper;
 	}
-
 }
+
+setInterval(() => {
+	if(TINYSLIDE_GLOBALS.nextQueue.length>0)
+	{
+		console.log(TINYSLIDE_GLOBALS.nextQueue)
+		TINYSLIDE_GLOBALS.nextQueue.forEach((id) => { if(id) Tinyslide.GetInstance(id)?.doNext(); })
+		TINYSLIDE_GLOBALS.nextQueue=[];
+	}
+	if(TINYSLIDE_GLOBALS.prevQueue.length>0)
+	{
+		console.log(TINYSLIDE_GLOBALS.prevQueue)
+		TINYSLIDE_GLOBALS.prevQueue.forEach((id) => { if(id) Tinyslide.GetInstance(id)?.doPrev(); })
+		TINYSLIDE_GLOBALS.prevQueue=[];
+	}
+},100)
 
 export default Tinyslide
