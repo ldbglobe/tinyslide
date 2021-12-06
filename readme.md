@@ -1,12 +1,12 @@
 Demonstration https://codepen.io/ldbglobe/full/mdmwpoK
 
-## Usage 
+## Usage
 
 CDN: https://cdn.jsdelivr.net/npm/tinyslide@latest/dist/index.js
 
 NPM/YARN:
 ```bash
-yarn add -D Tinyslide
+yarn add -D tinyslide
 import Tinyslide from 'Tinyslide';
 ```
 "window."" prefix is not needed for NPM module usage
